@@ -8,6 +8,21 @@ message Movie{
     bool watched=3;
 
 }
+
+message Series{
+    uint32 id=1;
+    string name=2;
+    bool watched=3;
+
+}
+message SeriesList{
+    repeated Series series =1;
+}
+
+message SeriesId{
+    uint32 id=1;
+}
+
 message MovieList{
     repeated Movie movies =1;
 }
@@ -21,4 +36,11 @@ service MovieService{
     rpc GetAllMovies(Empty) returns (MovieList);
     rpc UpdateWatched(MovieId) returns (Movie);
     rpc DeleteMovie(MovieId) returns (Empty);
+}
+
+service SeriesService{
+    rpc CreateSeries(Series) returns (Series);
+    rpc GetAllSeries(Empty) returns (SeriesList);
+    rpc UpdateWatched(SeriesId) returns (Series);
+    rpc DeleteSeries(SeriesId) returns (Empty);
 }

@@ -20,6 +20,7 @@ func main() {
 
 	serv := grpc.NewServer()
 	pb.RegisterMovieServiceServer(serv, &server.MovieServer{})
+	pb.RegisterSeriesServiceServer(serv, &server.SeriesServer{})
 	log.Println("gRPC server running on :9000")
 
 	serv.Serve(lis)

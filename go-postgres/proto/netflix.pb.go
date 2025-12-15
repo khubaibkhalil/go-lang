@@ -81,6 +81,154 @@ func (x *Movie) GetWatched() bool {
 	return false
 }
 
+type Series struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Watched       bool                   `protobuf:"varint,3,opt,name=watched,proto3" json:"watched,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Series) Reset() {
+	*x = Series{}
+	mi := &file_proto_netflix_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Series) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Series) ProtoMessage() {}
+
+func (x *Series) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_netflix_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Series.ProtoReflect.Descriptor instead.
+func (*Series) Descriptor() ([]byte, []int) {
+	return file_proto_netflix_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *Series) GetId() uint32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *Series) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Series) GetWatched() bool {
+	if x != nil {
+		return x.Watched
+	}
+	return false
+}
+
+type SeriesList struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Series        []*Series              `protobuf:"bytes,1,rep,name=series,proto3" json:"series,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SeriesList) Reset() {
+	*x = SeriesList{}
+	mi := &file_proto_netflix_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SeriesList) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SeriesList) ProtoMessage() {}
+
+func (x *SeriesList) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_netflix_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SeriesList.ProtoReflect.Descriptor instead.
+func (*SeriesList) Descriptor() ([]byte, []int) {
+	return file_proto_netflix_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *SeriesList) GetSeries() []*Series {
+	if x != nil {
+		return x.Series
+	}
+	return nil
+}
+
+type SeriesId struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint32                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SeriesId) Reset() {
+	*x = SeriesId{}
+	mi := &file_proto_netflix_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SeriesId) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SeriesId) ProtoMessage() {}
+
+func (x *SeriesId) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_netflix_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SeriesId.ProtoReflect.Descriptor instead.
+func (*SeriesId) Descriptor() ([]byte, []int) {
+	return file_proto_netflix_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *SeriesId) GetId() uint32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
 type MovieList struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Movies        []*Movie               `protobuf:"bytes,1,rep,name=movies,proto3" json:"movies,omitempty"`
@@ -90,7 +238,7 @@ type MovieList struct {
 
 func (x *MovieList) Reset() {
 	*x = MovieList{}
-	mi := &file_proto_netflix_proto_msgTypes[1]
+	mi := &file_proto_netflix_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -102,7 +250,7 @@ func (x *MovieList) String() string {
 func (*MovieList) ProtoMessage() {}
 
 func (x *MovieList) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_netflix_proto_msgTypes[1]
+	mi := &file_proto_netflix_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -115,7 +263,7 @@ func (x *MovieList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MovieList.ProtoReflect.Descriptor instead.
 func (*MovieList) Descriptor() ([]byte, []int) {
-	return file_proto_netflix_proto_rawDescGZIP(), []int{1}
+	return file_proto_netflix_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *MovieList) GetMovies() []*Movie {
@@ -133,7 +281,7 @@ type Empty struct {
 
 func (x *Empty) Reset() {
 	*x = Empty{}
-	mi := &file_proto_netflix_proto_msgTypes[2]
+	mi := &file_proto_netflix_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -145,7 +293,7 @@ func (x *Empty) String() string {
 func (*Empty) ProtoMessage() {}
 
 func (x *Empty) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_netflix_proto_msgTypes[2]
+	mi := &file_proto_netflix_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -158,7 +306,7 @@ func (x *Empty) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Empty.ProtoReflect.Descriptor instead.
 func (*Empty) Descriptor() ([]byte, []int) {
-	return file_proto_netflix_proto_rawDescGZIP(), []int{2}
+	return file_proto_netflix_proto_rawDescGZIP(), []int{5}
 }
 
 type MovieId struct {
@@ -170,7 +318,7 @@ type MovieId struct {
 
 func (x *MovieId) Reset() {
 	*x = MovieId{}
-	mi := &file_proto_netflix_proto_msgTypes[3]
+	mi := &file_proto_netflix_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -182,7 +330,7 @@ func (x *MovieId) String() string {
 func (*MovieId) ProtoMessage() {}
 
 func (x *MovieId) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_netflix_proto_msgTypes[3]
+	mi := &file_proto_netflix_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -195,7 +343,7 @@ func (x *MovieId) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MovieId.ProtoReflect.Descriptor instead.
 func (*MovieId) Descriptor() ([]byte, []int) {
-	return file_proto_netflix_proto_rawDescGZIP(), []int{3}
+	return file_proto_netflix_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *MovieId) GetId() uint32 {
@@ -213,7 +361,16 @@ const file_proto_netflix_proto_rawDesc = "" +
 	"\x05Movie\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
-	"\awatched\x18\x03 \x01(\bR\awatched\"1\n" +
+	"\awatched\x18\x03 \x01(\bR\awatched\"F\n" +
+	"\x06Series\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
+	"\awatched\x18\x03 \x01(\bR\awatched\"3\n" +
+	"\n" +
+	"SeriesList\x12%\n" +
+	"\x06series\x18\x01 \x03(\v2\r.proto.SeriesR\x06series\"\x1a\n" +
+	"\bSeriesId\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\rR\x02id\"1\n" +
 	"\tMovieList\x12$\n" +
 	"\x06movies\x18\x01 \x03(\v2\f.proto.MovieR\x06movies\"\a\n" +
 	"\x05Empty\"\x19\n" +
@@ -223,7 +380,12 @@ const file_proto_netflix_proto_rawDesc = "" +
 	"\vCreateMovie\x12\f.proto.Movie\x1a\f.proto.Movie\x12.\n" +
 	"\fGetAllMovies\x12\f.proto.Empty\x1a\x10.proto.MovieList\x12-\n" +
 	"\rUpdateWatched\x12\x0e.proto.MovieId\x1a\f.proto.Movie\x12+\n" +
-	"\vDeleteMovie\x12\x0e.proto.MovieId\x1a\f.proto.EmptyB\x0fZ\r./proto;protob\x06proto3"
+	"\vDeleteMovie\x12\x0e.proto.MovieId\x1a\f.proto.Empty2\xce\x01\n" +
+	"\rSeriesService\x12,\n" +
+	"\fCreateSeries\x12\r.proto.Series\x1a\r.proto.Series\x12/\n" +
+	"\fGetAllSeries\x12\f.proto.Empty\x1a\x11.proto.SeriesList\x12/\n" +
+	"\rUpdateWatched\x12\x0f.proto.SeriesId\x1a\r.proto.Series\x12-\n" +
+	"\fDeleteSeries\x12\x0f.proto.SeriesId\x1a\f.proto.EmptyB\x0fZ\r./proto;protob\x06proto3"
 
 var (
 	file_proto_netflix_proto_rawDescOnce sync.Once
@@ -237,28 +399,40 @@ func file_proto_netflix_proto_rawDescGZIP() []byte {
 	return file_proto_netflix_proto_rawDescData
 }
 
-var file_proto_netflix_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_proto_netflix_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_proto_netflix_proto_goTypes = []any{
-	(*Movie)(nil),     // 0: proto.Movie
-	(*MovieList)(nil), // 1: proto.MovieList
-	(*Empty)(nil),     // 2: proto.Empty
-	(*MovieId)(nil),   // 3: proto.MovieId
+	(*Movie)(nil),      // 0: proto.Movie
+	(*Series)(nil),     // 1: proto.Series
+	(*SeriesList)(nil), // 2: proto.SeriesList
+	(*SeriesId)(nil),   // 3: proto.SeriesId
+	(*MovieList)(nil),  // 4: proto.MovieList
+	(*Empty)(nil),      // 5: proto.Empty
+	(*MovieId)(nil),    // 6: proto.MovieId
 }
 var file_proto_netflix_proto_depIdxs = []int32{
-	0, // 0: proto.MovieList.movies:type_name -> proto.Movie
-	0, // 1: proto.MovieService.CreateMovie:input_type -> proto.Movie
-	2, // 2: proto.MovieService.GetAllMovies:input_type -> proto.Empty
-	3, // 3: proto.MovieService.UpdateWatched:input_type -> proto.MovieId
-	3, // 4: proto.MovieService.DeleteMovie:input_type -> proto.MovieId
-	0, // 5: proto.MovieService.CreateMovie:output_type -> proto.Movie
-	1, // 6: proto.MovieService.GetAllMovies:output_type -> proto.MovieList
-	0, // 7: proto.MovieService.UpdateWatched:output_type -> proto.Movie
-	2, // 8: proto.MovieService.DeleteMovie:output_type -> proto.Empty
-	5, // [5:9] is the sub-list for method output_type
-	1, // [1:5] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	1,  // 0: proto.SeriesList.series:type_name -> proto.Series
+	0,  // 1: proto.MovieList.movies:type_name -> proto.Movie
+	0,  // 2: proto.MovieService.CreateMovie:input_type -> proto.Movie
+	5,  // 3: proto.MovieService.GetAllMovies:input_type -> proto.Empty
+	6,  // 4: proto.MovieService.UpdateWatched:input_type -> proto.MovieId
+	6,  // 5: proto.MovieService.DeleteMovie:input_type -> proto.MovieId
+	1,  // 6: proto.SeriesService.CreateSeries:input_type -> proto.Series
+	5,  // 7: proto.SeriesService.GetAllSeries:input_type -> proto.Empty
+	3,  // 8: proto.SeriesService.UpdateWatched:input_type -> proto.SeriesId
+	3,  // 9: proto.SeriesService.DeleteSeries:input_type -> proto.SeriesId
+	0,  // 10: proto.MovieService.CreateMovie:output_type -> proto.Movie
+	4,  // 11: proto.MovieService.GetAllMovies:output_type -> proto.MovieList
+	0,  // 12: proto.MovieService.UpdateWatched:output_type -> proto.Movie
+	5,  // 13: proto.MovieService.DeleteMovie:output_type -> proto.Empty
+	1,  // 14: proto.SeriesService.CreateSeries:output_type -> proto.Series
+	2,  // 15: proto.SeriesService.GetAllSeries:output_type -> proto.SeriesList
+	1,  // 16: proto.SeriesService.UpdateWatched:output_type -> proto.Series
+	5,  // 17: proto.SeriesService.DeleteSeries:output_type -> proto.Empty
+	10, // [10:18] is the sub-list for method output_type
+	2,  // [2:10] is the sub-list for method input_type
+	2,  // [2:2] is the sub-list for extension type_name
+	2,  // [2:2] is the sub-list for extension extendee
+	0,  // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_proto_netflix_proto_init() }
@@ -272,9 +446,9 @@ func file_proto_netflix_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_netflix_proto_rawDesc), len(file_proto_netflix_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   7,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   2,
 		},
 		GoTypes:           file_proto_netflix_proto_goTypes,
 		DependencyIndexes: file_proto_netflix_proto_depIdxs,

@@ -233,3 +233,219 @@ var MovieService_ServiceDesc = grpc.ServiceDesc{
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "proto/netflix.proto",
 }
+
+const (
+	SeriesService_CreateSeries_FullMethodName  = "/proto.SeriesService/CreateSeries"
+	SeriesService_GetAllSeries_FullMethodName  = "/proto.SeriesService/GetAllSeries"
+	SeriesService_UpdateWatched_FullMethodName = "/proto.SeriesService/UpdateWatched"
+	SeriesService_DeleteSeries_FullMethodName  = "/proto.SeriesService/DeleteSeries"
+)
+
+// SeriesServiceClient is the client API for SeriesService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type SeriesServiceClient interface {
+	CreateSeries(ctx context.Context, in *Series, opts ...grpc.CallOption) (*Series, error)
+	GetAllSeries(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*SeriesList, error)
+	UpdateWatched(ctx context.Context, in *SeriesId, opts ...grpc.CallOption) (*Series, error)
+	DeleteSeries(ctx context.Context, in *SeriesId, opts ...grpc.CallOption) (*Empty, error)
+}
+
+type seriesServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewSeriesServiceClient(cc grpc.ClientConnInterface) SeriesServiceClient {
+	return &seriesServiceClient{cc}
+}
+
+func (c *seriesServiceClient) CreateSeries(ctx context.Context, in *Series, opts ...grpc.CallOption) (*Series, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Series)
+	err := c.cc.Invoke(ctx, SeriesService_CreateSeries_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *seriesServiceClient) GetAllSeries(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*SeriesList, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SeriesList)
+	err := c.cc.Invoke(ctx, SeriesService_GetAllSeries_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *seriesServiceClient) UpdateWatched(ctx context.Context, in *SeriesId, opts ...grpc.CallOption) (*Series, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Series)
+	err := c.cc.Invoke(ctx, SeriesService_UpdateWatched_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *seriesServiceClient) DeleteSeries(ctx context.Context, in *SeriesId, opts ...grpc.CallOption) (*Empty, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, SeriesService_DeleteSeries_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// SeriesServiceServer is the server API for SeriesService service.
+// All implementations must embed UnimplementedSeriesServiceServer
+// for forward compatibility.
+type SeriesServiceServer interface {
+	CreateSeries(context.Context, *Series) (*Series, error)
+	GetAllSeries(context.Context, *Empty) (*SeriesList, error)
+	UpdateWatched(context.Context, *SeriesId) (*Series, error)
+	DeleteSeries(context.Context, *SeriesId) (*Empty, error)
+	mustEmbedUnimplementedSeriesServiceServer()
+}
+
+// UnimplementedSeriesServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedSeriesServiceServer struct{}
+
+func (UnimplementedSeriesServiceServer) CreateSeries(context.Context, *Series) (*Series, error) {
+	return nil, status.Error(codes.Unimplemented, "method CreateSeries not implemented")
+}
+func (UnimplementedSeriesServiceServer) GetAllSeries(context.Context, *Empty) (*SeriesList, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetAllSeries not implemented")
+}
+func (UnimplementedSeriesServiceServer) UpdateWatched(context.Context, *SeriesId) (*Series, error) {
+	return nil, status.Error(codes.Unimplemented, "method UpdateWatched not implemented")
+}
+func (UnimplementedSeriesServiceServer) DeleteSeries(context.Context, *SeriesId) (*Empty, error) {
+	return nil, status.Error(codes.Unimplemented, "method DeleteSeries not implemented")
+}
+func (UnimplementedSeriesServiceServer) mustEmbedUnimplementedSeriesServiceServer() {}
+func (UnimplementedSeriesServiceServer) testEmbeddedByValue()                       {}
+
+// UnsafeSeriesServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to SeriesServiceServer will
+// result in compilation errors.
+type UnsafeSeriesServiceServer interface {
+	mustEmbedUnimplementedSeriesServiceServer()
+}
+
+func RegisterSeriesServiceServer(s grpc.ServiceRegistrar, srv SeriesServiceServer) {
+	// If the following call panics, it indicates UnimplementedSeriesServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&SeriesService_ServiceDesc, srv)
+}
+
+func _SeriesService_CreateSeries_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Series)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SeriesServiceServer).CreateSeries(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SeriesService_CreateSeries_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SeriesServiceServer).CreateSeries(ctx, req.(*Series))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SeriesService_GetAllSeries_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SeriesServiceServer).GetAllSeries(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SeriesService_GetAllSeries_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SeriesServiceServer).GetAllSeries(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SeriesService_UpdateWatched_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SeriesId)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SeriesServiceServer).UpdateWatched(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SeriesService_UpdateWatched_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SeriesServiceServer).UpdateWatched(ctx, req.(*SeriesId))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SeriesService_DeleteSeries_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SeriesId)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SeriesServiceServer).DeleteSeries(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SeriesService_DeleteSeries_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SeriesServiceServer).DeleteSeries(ctx, req.(*SeriesId))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// SeriesService_ServiceDesc is the grpc.ServiceDesc for SeriesService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var SeriesService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "proto.SeriesService",
+	HandlerType: (*SeriesServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateSeries",
+			Handler:    _SeriesService_CreateSeries_Handler,
+		},
+		{
+			MethodName: "GetAllSeries",
+			Handler:    _SeriesService_GetAllSeries_Handler,
+		},
+		{
+			MethodName: "UpdateWatched",
+			Handler:    _SeriesService_UpdateWatched_Handler,
+		},
+		{
+			MethodName: "DeleteSeries",
+			Handler:    _SeriesService_DeleteSeries_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "proto/netflix.proto",
+}
