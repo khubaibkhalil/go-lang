@@ -1,0 +1,12 @@
+syntax ="proto3";
+package printer;
+option go_package ="./proto";
+
+message Print{
+    string hello=1;
+
+}
+
+service Printer {
+    rpc PrintString(Print) returns (Print);
+} 

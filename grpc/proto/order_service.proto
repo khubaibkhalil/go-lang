@@ -1,0 +1,21 @@
+service OrderService{
+    rpc PlaceOrder(OrderRequest) retruns (OrderResponse){}
+}
+
+message OrderRequest{
+    int32 size =1;
+    repeated Topping topping =2;
+    string customer_id =3;
+
+}
+
+enum Topping{
+    TOPPING_UNSPECIFIED =0;
+    TOPPING_PEPPORONI =1 ;
+    TOPPING_JALAPENO=2;
+}
+
+message OrderResponse{
+    google.rpc.Status =1;
+    string order_id =2;
+}
