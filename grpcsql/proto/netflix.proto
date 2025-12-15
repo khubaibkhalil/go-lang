@@ -1,0 +1,30 @@
+syntax= "proto3";
+
+option go_package ="/proto";
+
+message Movie{
+    string id =1;
+    string movie =2;
+    bool watched = 3;
+}
+message Id{
+    string id=1;
+}
+message MovieList{
+    repeated Movie list=1;
+}
+message UpdateMoive {
+
+  
+}
+
+message Empty{}
+
+
+service Netflix{
+    rpc createMovie(Movie) returns (Movie);
+    rpc getAllMovies(Empty) returns (MovieList);
+    rpc getMoveById(Id) returns (Movie);
+    rpc updateMovieById(Movie) returns (Movie);
+    rpc deleteMovieById(Id) returns (Empty);
+}
